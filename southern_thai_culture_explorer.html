@@ -1,0 +1,979 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>มนต์เสน่ห์แดนใต้: วัฒนธรรมและประเพณีภาคใต้</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&family=Prompt:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'southern-gold': '#F59E0B',
+                        'southern-teal': '#0D9488',
+                        'southern-deep-teal': '#0F766E',
+                        'southern-red': '#E11D48',
+                        'southern-purple': '#7C3AED',
+                        'southern-ocean': '#0284C7',
+                        'batik-yellow': '#FBBF24',
+                        'batik-magenta': '#D946EF'
+                    },
+                    fontFamily: {
+                        prompt: ['Prompt', 'sans-serif'],
+                        kanit: ['Kanit', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body {
+            font-family: 'Prompt', sans-serif;
+            background-color: #0f172a;
+            color: #f8fafc;
+            overflow-x: hidden;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1e293b;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #f59e0b;
+            border-radius: 5px;
+        }
+
+        /* Animated Gradient & Patterns */
+        .nora-gradient {
+            background: linear-gradient(135deg, #e11d48 0%, #7c3aed 35%, #0284c7 70%, #0d9488 100%);
+            background-size: 300% 300%;
+            animation: gradientMove 12s ease infinite;
+        }
+
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Batik pattern overlay */
+        .batik-overlay {
+            background-image: radial-gradient(#f59e0b 1px, transparent 1px), radial-gradient(#e11d48 1px, #0f172a 1px);
+            background-size: 40px 40px;
+            background-position: 0 0, 20px 20px;
+            opacity: 0.15;
+        }
+
+        /* Shadow puppet canvas style */
+        .shadow-theater {
+            background: radial-gradient(circle, #fef3c7 0%, #f59e0b 40%, #78350f 100%);
+            box-shadow: inset 0 0 50px rgba(0,0,0,0.8);
+        }
+
+        .shadow-puppet {
+            filter: drop-shadow(5px 10px 8px rgba(0, 0, 0, 0.7));
+            transition: transform 0.15s ease-out;
+            cursor: pointer;
+        }
+
+        .glow-hover:hover {
+            box-shadow: 0 0 25px rgba(245, 158, 11, 0.6);
+        }
+
+        .spice-fire {
+            animation: pulseFire 1s infinite alternate;
+        }
+
+        @keyframes pulseFire {
+            from { transform: scale(1); filter: drop-shadow(0 0 2px #ef4444); }
+            to { transform: scale(1.15); filter: drop-shadow(0 0 8px #f97316); }
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col justify-between selection:bg-amber-500 selection:text-slate-900">
+
+    <!-- Navigation Bar -->
+    <header class="sticky top-0 z-50 backdrop-blur-md bg-slate-950/80 border-b border-amber-500/30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <div class="flex items-center space-x-3 cursor-pointer" onclick="scrollToTop()">
+                <div class="w-12 h-12 rounded-full bg-gradient-to-tr from-amber-500 via-rose-500 to-teal-400 p-0.5 shadow-lg shadow-amber-500/20">
+                    <div class="w-full h-full bg-slate-950 rounded-full flex items-center justify-center">
+                        <i class="fa-solid fa-crown text-amber-400 text-xl"></i>
+                    </div>
+                </div>
+                <div>
+                    <h1 class="font-kanit font-bold text-xl sm:text-2xl bg-gradient-to-r from-amber-400 via-rose-300 to-teal-300 bg-clip-text text-transparent">
+                        มนต์เสน่ห์แดนใต้
+                    </h1>
+                    <p class="text-xs text-amber-200/70">วัฒนธรรมและภูมิปัญญาภาคใต้</p>
+                </div>
+            </div>
+
+            <!-- Navigation Links -->
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium">
+                <a href="#hero" class="hover:text-amber-400 transition-colors">หน้าแรก</a>
+                <a href="#explorer" class="hover:text-amber-400 transition-colors">วัฒนธรรม 4 มิติ</a>
+                <a href="#puppet-theater" class="hover:text-amber-400 transition-colors">โรงหนังตะลุง</a>
+                <a href="#batik-studio" class="hover:text-amber-400 transition-colors">ออกแบบผ้าบาติก</a>
+                <a href="#dialect-quiz" class="hover:text-amber-400 transition-colors">ภาษาใต้พรึบพรับ</a>
+            </nav>
+
+            <!-- Sound Controller -->
+            <div class="flex items-center space-x-3">
+                <button id="bg-sound-btn" onclick="toggleSouthernMusic()" class="flex items-center space-x-2 px-4 py-2 rounded-full bg-gradient-to-r from-amber-500 to-rose-600 hover:from-amber-600 hover:to-rose-700 text-white font-medium text-xs sm:text-sm shadow-md shadow-amber-500/20 transition-all transform active:scale-95">
+                    <i id="music-icon" class="fa-solid fa-music"></i>
+                    <span id="music-text">เปิดเสียงดนตรีใต้</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero" class="relative min-h-[85vh] flex items-center justify-center overflow-hidden nora-gradient">
+        <!-- Pattern Overlay -->
+        <div class="absolute inset-0 batik-overlay pointer-events-none"></div>
+
+        <!-- Floating Particles / Beads Accent -->
+        <div class="absolute inset-0 pointer-events-none overflow-hidden opacity-30">
+            <div class="absolute top-10 left-10 w-24 h-24 rounded-full bg-amber-400 blur-2xl animate-pulse"></div>
+            <div class="absolute bottom-20 right-10 w-32 h-32 rounded-full bg-teal-400 blur-2xl animate-pulse" style="animation-delay: 2s;"></div>
+            <div class="absolute top-1/2 left-1/3 w-40 h-40 rounded-full bg-rose-500 blur-3xl animate-pulse" style="animation-delay: 1s;"></div>
+        </div>
+
+        <div class="relative z-10 max-w-5xl mx-auto px-4 text-center py-16">
+            <div class="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-slate-900/60 border border-amber-400/40 text-amber-300 text-xs sm:text-sm font-medium mb-6 backdrop-blur-md">
+                <i class="fa-solid fa-gem text-amber-400"></i>
+                <span>มรดกทางวัฒนธรรมแห่งแดนด้ามขวานทอง</span>
+            </div>
+
+            <h1 class="text-4xl sm:text-6xl lg:text-7xl font-kanit font-extrabold tracking-tight text-white mb-6 drop-shadow-lg leading-tight">
+                มนต์เสน่ห์แดนใต้ <br>
+                <span class="bg-gradient-to-r from-amber-300 via-rose-200 to-teal-200 bg-clip-text text-transparent">
+                    วัฒนธรรมและประเพณีภาคใต้
+                </span>
+            </h1>
+
+            <p class="max-w-2xl mx-auto text-base sm:text-lg text-slate-100/90 font-light mb-10 leading-relaxed drop-shadow">
+                สัมผัสความงดงามของศิลปะการแสดงมโนราห์ หนังตะลุง รสชาติอาหารอันเผ็ดร้อนจี๊ดจ๊าด 
+                ผ้าบาติกหลากสีสัน และมรดกภูมิปัญญาสุดทรงคุณค่าของชาวใต้
+            </p>
+
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="#explorer" class="px-8 py-4 rounded-full bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-base shadow-xl shadow-amber-500/30 transition-all hover:scale-105 active:scale-95 flex items-center space-x-2">
+                    <span>เริ่มสำรวจวัฒนธรรม</span>
+                    <i class="fa-solid fa-compass"></i>
+                </a>
+                <a href="#puppet-theater" class="px-8 py-4 rounded-full bg-slate-900/80 hover:bg-slate-900 text-amber-300 border border-amber-500/40 font-semibold text-base backdrop-blur-md transition-all hover:scale-105 active:scale-95 flex items-center space-x-2">
+                    <span>ลองเชิดหนังตะลุง</span>
+                    <i class="fa-solid fa-masks-theater"></i>
+                </a>
+            </div>
+        </div>
+
+        <!-- Wave Divider -->
+        <div class="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-b from-transparent to-slate-950"></div>
+    </section>
+
+    <!-- Main Interactive Culture Explorer -->
+    <section id="explorer" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl sm:text-4xl font-kanit font-bold text-amber-400 mb-4">
+                <i class="fa-solid fa-cubes text-rose-500 mr-2"></i>วัฒนธรรมใต้ 4 มิติ
+            </h2>
+            <p class="text-slate-400 max-w-xl mx-auto">
+                เลือกหัวข้อที่สนใจเพื่อเจาะลึกความงดงามของวิถีชีวิต ศิลปะ และภูมิปัญญาภาคใต้
+            </p>
+        </div>
+
+        <!-- Tab Buttons -->
+        <div class="flex flex-wrap justify-center gap-2 sm:gap-4 mb-10">
+            <button onclick="switchTab('arts')" id="tab-arts" class="culture-tab px-6 py-3 rounded-2xl border font-semibold transition-all duration-300 flex items-center space-x-2 bg-amber-500 border-amber-400 text-slate-950 shadow-lg shadow-amber-500/20">
+                <i class="fa-solid fa-masks-theater text-lg"></i>
+                <span>ศิลปะการแสดง</span>
+            </button>
+            <button onclick="switchTab('festivals')" id="tab-festivals" class="culture-tab px-6 py-3 rounded-2xl border border-slate-800 bg-slate-900/80 hover:bg-slate-800 text-slate-300 font-semibold transition-all duration-300 flex items-center space-x-2">
+                <i class="fa-solid fa-om text-lg text-rose-400"></i>
+                <span>ประเพณี & เทศกาล</span>
+            </button>
+            <button onclick="switchTab('food')" id="tab-food" class="culture-tab px-6 py-3 rounded-2xl border border-slate-800 bg-slate-900/80 hover:bg-slate-800 text-slate-300 font-semibold transition-all duration-300 flex items-center space-x-2">
+                <i class="fa-solid fa-pepper-hot text-lg text-red-500"></i>
+                <span>อาหารใต้รสจัดจ้าน</span>
+            </button>
+            <button onclick="switchTab('crafts')" id="tab-crafts" class="culture-tab px-6 py-3 rounded-2xl border border-slate-800 bg-slate-900/80 hover:bg-slate-800 text-slate-300 font-semibold transition-all duration-300 flex items-center space-x-2">
+                <i class="fa-solid fa-shirt text-lg text-teal-400"></i>
+                <span>หัตถกรรม & ภูมิปัญญา</span>
+            </button>
+        </div>
+
+        <!-- Tab Content Area -->
+        <div id="tab-content" class="min-h-[500px]">
+            <!-- Content dynamic inject via JS -->
+        </div>
+    </section>
+
+    <!-- Interactive Shadow Puppet Theater Section -->
+    <section id="puppet-theater" class="py-20 bg-slate-900 relative border-t border-b border-amber-500/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-8">
+                <span class="px-3 py-1 rounded-full bg-rose-500/20 text-rose-300 text-xs font-semibold uppercase tracking-wider">
+                    Interactive Sound & Puppet
+                </span>
+                <h2 class="text-3xl sm:text-4xl font-kanit font-bold text-amber-400 mt-2">
+                    โรงละคร หนังตะลุงดิจิทัล
+                </h2>
+                <p class="text-slate-400 max-w-xl mx-auto mt-2 text-sm sm:text-base">
+                    คลิกหรือแตะที่รูปตัวหนังตะลุงยอดฮิตเพื่อฟังเสียงพากย์และบทเจรจาสไตล์ชาวใต้แท้ๆ!
+                </p>
+            </div>
+
+            <!-- Stage Display -->
+            <div class="shadow-theater rounded-3xl p-6 sm:p-12 relative overflow-hidden max-w-4xl mx-auto border-4 border-amber-900 shadow-2xl min-h-[420px] flex flex-col justify-between">
+                
+                <!-- Stage Light / Backdrop effects -->
+                <div class="absolute top-0 left-1/2 transform -translate-x-1/2 w-3/4 h-24 bg-amber-200/20 blur-xl rounded-full pointer-events-none"></div>
+                
+                <!-- Puppet Theater Stage Title -->
+                <div class="text-center z-10">
+                    <div class="inline-block bg-slate-950/80 border border-amber-500/50 px-6 py-2 rounded-full text-amber-300 text-xs sm:text-sm font-semibold tracking-widest shadow-md">
+                        🎭 วิชิตศิลป์ หนังตะลุงประยุกต์
+                    </div>
+                </div>
+
+                <!-- Puppets Display Container -->
+                <div class="grid grid-cols-2 sm:grid-cols-3 gap-6 my-8 z-10 items-end justify-items-center">
+                    
+                    <!-- Puppet 1: Ai Teng -->
+                    <div onclick="playPuppetDialog('teng')" class="group cursor-pointer flex flex-col items-center">
+                        <div id="puppet-teng" class="shadow-puppet transform hover:scale-110 active:rotate-6 text-slate-950 text-center">
+                            <!-- SVG Ai Teng Silhouette -->
+                            <svg class="w-32 h-44 sm:w-40 sm:h-52 fill-slate-950 drop-shadow-xl" viewBox="0 0 100 140">
+                                <!-- Head & Body Silhouette -->
+                                <circle cx="50" cy="25" r="16"/>
+                                <path d="M 40,25 Q 30,30 25,25 Q 20,40 38,38 M 55,20 Q 68,22 65,30 Q 55,35 52,28" stroke="currentColor" stroke-width="2"/>
+                                <!-- Belly & Sarong -->
+                                <path d="M 38,38 C 30,50 25,70 35,90 C 40,95 60,95 65,90 C 70,70 65,50 55,38 Z"/>
+                                <!-- Arm with joint -->
+                                <path id="teng-arm" d="M 38,45 L 20,60 L 10,50 L 15,45" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+                                <!-- Legs -->
+                                <path d="M 40,90 L 35,120 L 25,125 M 60,90 L 62,120 L 72,125" stroke="currentColor" stroke-width="6" stroke-linecap="round"/>
+                                <!-- Eye hole -->
+                                <circle cx="54" cy="22" r="2" fill="#fef3c7"/>
+                            </svg>
+                        </div>
+                        <div class="mt-2 bg-slate-950/90 border border-amber-500/40 text-amber-300 px-3 py-1 rounded-lg text-xs font-bold shadow-md">
+                            อ้ายเท่ง (Ai Teng)
+                        </div>
+                    </div>
+
+                    <!-- Puppet 2: Song Saeng / Nu Hui -->
+                    <div onclick="playPuppetDialog('saeng')" class="group cursor-pointer flex flex-col items-center">
+                        <div id="puppet-saeng" class="shadow-puppet transform hover:scale-110 active:-rotate-6 text-slate-950 text-center">
+                            <!-- SVG Song Saeng Silhouette -->
+                            <svg class="w-32 h-44 sm:w-40 sm:h-52 fill-slate-950 drop-shadow-xl" viewBox="0 0 100 140">
+                                <circle cx="50" cy="28" r="18"/>
+                                <path d="M 42,28 Q 28,32 30,42 Q 40,42 45,35" stroke="currentColor" stroke-width="2"/>
+                                <!-- Fat Belly -->
+                                <path d="M 32,42 C 15,65 20,95 45,98 C 70,95 75,65 62,42 Z"/>
+                                <!-- Arm -->
+                                <path id="saeng-arm" d="M 32,50 L 15,65 L 25,75" stroke="currentColor" stroke-width="5" stroke-linecap="round"/>
+                                <!-- Short Legs -->
+                                <path d="M 38,96 L 35,120 L 28,122 M 55,96 L 58,120 L 65,122" stroke="currentColor" stroke-width="7" stroke-linecap="round"/>
+                                <circle cx="56" cy="26" r="2.5" fill="#fef3c7"/>
+                            </svg>
+                        </div>
+                        <div class="mt-2 bg-slate-950/90 border border-amber-500/40 text-amber-300 px-3 py-1 rounded-lg text-xs font-bold shadow-md">
+                            นายหนูนุ้ย / ทองแดง
+                        </div>
+                    </div>
+
+                    <!-- Instrument Gong Accent -->
+                    <div class="col-span-2 sm:col-span-1 flex flex-col items-center justify-center mt-4 sm:mt-0">
+                        <div onclick="playGongSound()" class="w-20 h-20 rounded-full bg-gradient-to-tr from-amber-800 to-amber-600 border-4 border-amber-400 flex items-center justify-center cursor-pointer shadow-xl hover:scale-110 active:scale-95 transition-transform group">
+                            <div class="w-6 h-6 rounded-full bg-amber-950 border-2 border-amber-400 group-hover:bg-amber-400 transition-colors"></div>
+                        </div>
+                        <span class="text-xs text-amber-950 font-bold mt-2 bg-amber-200/80 px-2 py-0.5 rounded">
+                            ตีโหม่ง (Sound FX)
+                        </span>
+                    </div>
+
+                </div>
+
+                <!-- Subtitle / Speech Bubble Dialog Box -->
+                <div id="puppet-dialog-box" class="z-10 bg-slate-950/95 border-2 border-amber-400/70 rounded-2xl p-4 text-center min-h-[80px] flex flex-col items-center justify-center transition-all">
+                    <p id="puppet-speaker" class="text-xs font-bold text-rose-400 uppercase tracking-wider mb-1">
+                        คลิกเลือกตัวละครบนจอเพื่อฟังบทพูด
+                    </p>
+                    <p id="puppet-text" class="text-base sm:text-lg font-semibold text-amber-200">
+                        "หวัดดีพี่น้องชาวใต้ทุกท่าน ยินดีต้อนรับเข้าสู่โรงหนังตะลุงดิจิทัล!"
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Batik & Nora Studio -->
+    <section id="batik-studio" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="text-center mb-10">
+            <span class="px-3 py-1 rounded-full bg-teal-500/20 text-teal-300 text-xs font-semibold uppercase tracking-wider">
+                Creative Studio
+            </span>
+            <h2 class="text-3xl sm:text-4xl font-kanit font-bold text-amber-400 mt-2">
+                ห้องออกแบบ ลวดลายผ้าบาติก & ลูกปัดมโนราห์
+            </h2>
+            <p class="text-slate-400 max-w-xl mx-auto mt-2 text-sm sm:text-base">
+                สร้างสรรค์ผลงานผ้าบาติกสไตล์เมืองใต้ตามจินตนาการของคุณ เลือกระบายสีสันลงบนลวดลายอัตลักษณ์ภาคใต้
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-slate-900 border border-amber-500/20 rounded-3xl p-6 sm:p-10 shadow-2xl">
+            
+            <!-- Controls / Palette Panel -->
+            <div class="lg:col-span-4 space-y-6">
+                <div>
+                    <h3 class="text-lg font-bold text-amber-300 mb-2">1. เลือกสีสไตล์แดนใต้</h3>
+                    <p class="text-xs text-slate-400 mb-4">คลิกเลือกสีที่ต้องการระบายลงบนผืนผ้า</p>
+                    
+                    <div class="grid grid-cols-5 gap-3">
+                        <button onclick="setSelectedColor('#e11d48')" class="color-btn w-10 h-10 rounded-full bg-rose-600 ring-2 ring-white/20 hover:scale-110 transition-transform" border-color="#e11d48"></button>
+                        <button onclick="setSelectedColor('#f59e0b')" class="color-btn w-10 h-10 rounded-full bg-amber-500 ring-2 ring-white/20 hover:scale-110 transition-transform" border-color="#f59e0b"></button>
+                        <button onclick="setSelectedColor('#0d9488')" class="color-btn w-10 h-10 rounded-full bg-teal-600 ring-2 ring-white/20 hover:scale-110 transition-transform" border-color="#0d9488"></button>
+                        <button onclick="setSelectedColor('#7c3aed')" class="color-btn w-10 h-10 rounded-full bg-purple-600 ring-2 ring-white/20 hover:scale-110 transition-transform" border-color="#7c3aed"></button>
+                        <button onclick="setSelectedColor('#0284c7')" class="color-btn w-10 h-10 rounded-full bg-sky-600 ring-2 ring-white/20 hover:scale-110 transition-transform" border-color="#0284c7"></button>
+                        <button onclick="setSelectedColor('#10b981')" class="color-btn w-10 h-10 rounded-full bg-emerald-500 ring-2 ring-white/20 hover:scale-110 transition-transform"></button>
+                        <button onclick="setSelectedColor('#f43f5e')" class="color-btn w-10 h-10 rounded-full bg-rose-500 ring-2 ring-white/20 hover:scale-110 transition-transform"></button>
+                        <button onclick="setSelectedColor('#fbbf24')" class="color-btn w-10 h-10 rounded-full bg-amber-400 ring-2 ring-white/20 hover:scale-110 transition-transform"></button>
+                        <button onclick="setSelectedColor('#06b6d4')" class="color-btn w-10 h-10 rounded-full bg-cyan-500 ring-2 ring-white/20 hover:scale-110 transition-transform"></button>
+                        <button onclick="setSelectedColor('#1e293b')" class="color-btn w-10 h-10 rounded-full bg-slate-800 ring-2 ring-white/20 hover:scale-110 transition-transform"></button>
+                    </div>
+                </div>
+
+                <div class="pt-4 border-t border-slate-800">
+                    <h3 class="text-sm font-bold text-slate-300 mb-2">สีที่กำลังใช้งาน:</h3>
+                    <div class="flex items-center space-x-3">
+                        <div id="current-color-indicator" class="w-8 h-8 rounded-full bg-amber-500 border-2 border-white"></div>
+                        <span id="current-color-hex" class="text-xs font-mono text-amber-300">#f59e0b</span>
+                    </div>
+                </div>
+
+                <div class="pt-4 border-t border-slate-800 flex space-x-3">
+                    <button onclick="resetBatikCanvas()" class="flex-1 py-3 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded-xl text-sm font-semibold transition-colors flex items-center justify-center space-x-2">
+                        <i class="fa-solid fa-rotate-left"></i>
+                        <span>รีเซ็ตสี</span>
+                    </button>
+                    <button onclick="randomizeBatikColors()" class="flex-1 py-3 bg-teal-600 hover:bg-teal-500 text-white rounded-xl text-sm font-semibold transition-colors flex items-center justify-center space-x-2 shadow-lg shadow-teal-600/30">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+                        <span>สุ่มสีอัตโนมัติ</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- SVG Batik Interactive Painting Canvas -->
+            <div class="lg:col-span-8 flex justify-center items-center bg-slate-950 p-6 rounded-2xl border border-amber-500/30 shadow-inner">
+                <svg id="batik-svg" class="w-full max-w-md h-auto cursor-pointer filter drop-shadow-lg" viewBox="0 0 300 300">
+                    <!-- Background -->
+                    <rect id="batik-bg" x="0" y="0" width="300" height="300" fill="#1e293b" onclick="colorPart(this)"/>
+                    
+                    <!-- Outer Pattern Frame -->
+                    <rect x="10" y="10" width="280" height="280" fill="none" stroke="#f59e0b" stroke-width="4"/>
+                    <rect x="20" y="20" width="260" height="260" fill="none" stroke="#f59e0b" stroke-width="2"/>
+
+                    <!-- Center Flower / Batik Mandala -->
+                    <g id="center-flower">
+                        <!-- Petals Layer 1 -->
+                        <path id="petal-1" d="M 150 150 C 130 90, 170 90, 150 150" fill="#e11d48" stroke="#f59e0b" stroke-width="2" onclick="colorPart(this)"/>
+                        <path id="petal-2" d="M 150 150 C 210 130, 210 170, 150 150" fill="#e11d48" stroke="#f59e0b" stroke-width="2" onclick="colorPart(this)"/>
+                        <path id="petal-3" d="M 150 150 C 170 210, 130 210, 150 150" fill="#e11d48" stroke="#f59e0b" stroke-width="2" onclick="colorPart(this)"/>
+                        <path id="petal-4" d="M 150 150 C 90 170, 90 130, 150 150" fill="#e11d48" stroke="#f59e0b" stroke-width="2" onclick="colorPart(this)"/>
+
+                        <!-- Diagonal Petals -->
+                        <path id="petal-5" d="M 150 150 C 190 110, 200 120, 150 150" fill="#0d9488" stroke="#f59e0b" stroke-width="2" onclick="colorPart(this)"/>
+                        <path id="petal-6" d="M 150 150 C 190 190, 180 200, 150 150" fill="#0d9488" stroke="#f59e0b" stroke-width="2" onclick="colorPart(this)"/>
+                        <path id="petal-7" d="M 150 150 C 110 190, 100 180, 150 150" fill="#0d9488" stroke="#f59e0b" stroke-width="2" onclick="colorPart(this)"/>
+                        <path id="petal-8" d="M 150 150 C 110 110, 120 100, 150 150" fill="#0d9488" stroke="#f59e0b" stroke-width="2" onclick="colorPart(this)"/>
+
+                        <!-- Center Core -->
+                        <circle id="core-outer" cx="150" cy="150" r="22" fill="#7c3aed" stroke="#f59e0b" stroke-width="2" onclick="colorPart(this)"/>
+                        <circle id="core-inner" cx="150" cy="150" r="12" fill="#f59e0b" stroke="#ffffff" stroke-width="1.5" onclick="colorPart(this)"/>
+                    </g>
+
+                    <!-- Corner Elements Inspired by Kollae Boats & Nora Beads -->
+                    <g id="corners">
+                        <path id="corner-1" d="M 30 30 Q 80 30 50 80 Q 30 50 30 30 Z" fill="#0284c7" stroke="#f59e0b" stroke-width="2" onclick="colorPart(this)"/>
+                        <path id="corner-2" d="M 270 30 Q 220 30 250 80 Q 270 50 270 30 Z" fill="#0284c7" stroke="#f59e0b" stroke-width="2" onclick="colorPart(this)"/>
+                        <path id="corner-3" d="M 270 270 Q 220 270 250 220 Q 270 250 270 270 Z" fill="#0284c7" stroke="#f59e0b" stroke-width="2" onclick="colorPart(this)"/>
+                        <path id="corner-4" d="M 30 270 Q 80 270 50 220 Q 30 250 30 270 Z" fill="#0284c7" stroke="#f59e0b" stroke-width="2" onclick="colorPart(this)"/>
+                    </g>
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <!-- Southern Dialect Mini Quiz & Flashcards -->
+    <section id="dialect-quiz" class="py-20 bg-slate-900 border-t border-amber-500/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <span class="px-3 py-1 rounded-full bg-amber-500/20 text-amber-300 text-xs font-semibold uppercase tracking-wider">
+                    Southern Vocabulary
+                </span>
+                <h2 class="text-3xl sm:text-4xl font-kanit font-bold text-amber-400 mt-2">
+                    ภาษาใต้พรึบพรับ (เรียนรู้คำเมืองใต้)
+                </h2>
+                <p class="text-slate-400 max-w-xl mx-auto mt-2 text-sm sm:text-base">
+                    ทดสอบความรู้ภาษาใต้แบบสนุกๆ พลิกการ์ดเรียนรู้คำศัพท์ หรือทำแบบทดสอบวัดระดับ!
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+                
+                <!-- Flashcards Container -->
+                <div class="bg-slate-950 p-6 sm:p-8 rounded-3xl border border-amber-500/20 shadow-xl">
+                    <h3 class="text-xl font-bold text-amber-300 mb-4 flex items-center">
+                        <i class="fa-solid fa-clone text-rose-500 mr-2"></i> แฟลชการ์ดคำศัพท์ภาคใต้
+                    </h3>
+                    
+                    <div id="flashcard" onclick="flipCard()" class="w-full h-56 bg-gradient-to-br from-slate-900 to-amber-950/40 border-2 border-amber-500/40 rounded-2xl p-6 flex flex-col justify-center items-center text-center cursor-pointer transition-all duration-500 hover:border-amber-400 hover:shadow-amber-500/10 shadow-lg">
+                        <span class="text-xs text-amber-400 font-semibold mb-2" id="card-step">การ์ดที่ 1 จาก 5 (คลิกเพื่อพลิกดูคำแปล)</span>
+                        <h4 id="card-word" class="text-3xl sm:text-4xl font-bold text-white mb-2">หรอยจังฮู้</h4>
+                        <p id="card-meaning" class="text-slate-400 text-sm hidden">
+                            <span class="text-amber-300 font-bold text-lg">แปลว่า: อร่อยมากๆ</span><br>
+                            <span class="text-xs italic text-slate-400">"แกงส้มถ้วยนี้หรอยจังฮู้เลยพี่น้อง!"</span>
+                        </p>
+                    </div>
+
+                    <div class="flex justify-between items-center mt-6">
+                        <button onclick="prevCard()" class="px-4 py-2 rounded-xl bg-slate-900 border border-slate-700 hover:bg-slate-800 text-sm text-slate-300 transition-colors">
+                            <i class="fa-solid fa-arrow-left mr-2"></i>ก่อนหน้า
+                        </button>
+                        <button onclick="nextCard()" class="px-4 py-2 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-sm transition-colors shadow-md">
+                            ถัดไป <i class="fa-solid fa-arrow-right ml-2"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Quiz Container -->
+                <div class="bg-slate-950 p-6 sm:p-8 rounded-3xl border border-amber-500/20 shadow-xl">
+                    <h3 class="text-xl font-bold text-amber-300 mb-4 flex items-center">
+                        <i class="fa-solid fa-circle-question text-teal-400 mr-2"></i> ควิซตอบคำถามภาษาใต้
+                    </h3>
+
+                    <div id="quiz-box">
+                        <div class="mb-4 flex justify-between items-center text-xs text-slate-400">
+                            <span id="quiz-progress">ข้อที่ 1 / 3</span>
+                            <span id="quiz-score" class="text-amber-400 font-bold">คะแนน: 0</span>
+                        </div>
+
+                        <p id="quiz-question" class="text-lg font-semibold text-slate-100 mb-6">
+                            คำว่า "แหลง" ในภาษาใต้ มีความหมายตรงกับข้อใด?
+                        </p>
+
+                        <div id="quiz-options" class="space-y-3">
+                            <!-- Options rendered dynamically -->
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 border-t border-slate-800 py-10 px-4 sm:px-6 lg:px-8 text-center text-xs sm:text-sm text-slate-500">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4">
+            <div class="flex items-center space-x-2">
+                <i class="fa-solid fa-crown text-amber-500"></i>
+                <span class="font-kanit font-semibold text-slate-300">มนต์เสน่ห์แดนใต้ • Southern Thai Culture</span>
+            </div>
+            <p>© 2026 รังสรรค์ด้วยความภาคภูมิใจในมรดกวัฒนธรรมไทยภาคใต้</p>
+            <div class="flex space-x-4 text-slate-400">
+                <a href="#hero" class="hover:text-amber-400">กลับขึ้นด้านบน <i class="fa-solid fa-arrow-up ml-1"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Culture Explorer Data
+        const cultureData = {
+            arts: [
+                {
+                    title: "มโนราห์ (Nora)",
+                    subtitle: "มรดกภูมิปัญญาทางวัฒนธรรมที่จับต้องไม่ได้ของมนุษยชาติ (UNESCO)",
+                    desc: "การแสดงศิลปะร่ายรำอันอ่อนช้อย ผสมผสานเครื่องแต่งกายลูกปัดร้อยหลากสีสัน เทริด (ชฎา) สวมเล็บยาว และท่วงท่าเลียนแบบนกหรือสัตว์ตามวรรณคดี ท่ารำย้อนเข่าและสะโพกอันเป็นเอกลักษณ์",
+                    tags: ["UNESCO", "เครื่องแต่งกายลูกปัด", "ท่ารำอ่อนช้อย"],
+                    icon: "fa-crown",
+                    color: "amber"
+                },
+                {
+                    title: "หนังตะลุง (Nang Talung)",
+                    subtitle: "มหรสพเงาแห่งปัญญาและรอยยิ้ม",
+                    desc: "การแสดงเชิดตัวหนังฉลุจากหนังวัวหรือหนังควาย ผ่านแสงไฟกระทบจอผ้าขาว ให้ความรู้ ความบันเทิง สะท้อนการเมือง สังคม และมีตัวละครจำอวดที่สร้างรอยยิ้ม เช่น อ้ายเท่ง นายหนูนุ้ย",
+                    tags: ["ตัวหนังฉลุ", "จำอวดฮาๆ", "สะท้อนสังคม"],
+                    icon: "fa-masks-theater",
+                    color: "rose"
+                },
+                {
+                    title: "ลิเกฮูลู (Likay Hulu)",
+                    subtitle: "การแสดงขับร้องร่วมกับจังหวะรำมะนาอันครึกครื้น",
+                    desc: "ศิลปะการแสดงพื้นบ้านภาคใต้ตอนล่าง ร้องขับร้องบทกวีด้วยความฉับไว ตบมือและไหวตัวเข้าจังหวะกลองรำมะนา สร้างความสนุกสนานและสามัคคีในชุมชน",
+                    tags: ["กลองรำมะนา", "การร้องแก้กัน", "ภาคใต้ตอนล่าง"],
+                    icon: "fa-drum",
+                    color: "teal"
+                }
+            ],
+            festivals: [
+                {
+                    title: "ประเพณีชักพระ (Chak Phra)",
+                    subtitle: "ศรัทธายิ่งใหญ่แห่งลุ่มน้ำและทางบก",
+                    desc: "ประเพณีสำคัญหลังออกพรรษา อัญเชิญพระพุทธรูปขึ้นประดิษฐานบนบุษบก เรือพระทางน้ำและทางบก ตกแต่งด้วยลายไทยอันวิจิตรพิสดาร พร้อมเสียงประโคมโพนและโพนแข่งอันเร้าใจ",
+                    tags: ["เรือพระวิจิตร", "แข่งโพน", "ออกพรรษา"],
+                    icon: "fa-dharmachakra",
+                    color: "amber"
+                },
+                {
+                    title: "ประเพณีสารทเดือนสิบ (Boon Sart Duen Sip)",
+                    subtitle: "กตัญญูกตเวทิตาต่อบรรพบุรุษด้วย ขนม 5 อย่าง",
+                    desc: "อุทิศส่วนกุศลให้บรรพบุรุษและเปรตญาติ โดยจัด 'หฺมรับ' พร้อมขนมเอกลักษณ์ 5 ชนิด: ขนมพอง (แพพาหนะ), ขนมลา (เสื้อผ้า), ขนมกง (เครื่องประดับ), ขนมดีซัม (เบี้ยเงิน), ขนมบ้า (สะบ้าเล่น)",
+                    tags: ["ขนม 5 อย่าง", "จัดหฺมรับ", "ทำบุญใหญ่"],
+                    icon: "fa-hands-holding-child",
+                    color: "purple"
+                },
+                {
+                    title: "เทศกาลกินเจ ภูเก็ต (Phuket Vegetarian Festival)",
+                    subtitle: "ศรัทธาถือศีลกินผัก 9 วัน 9 คืน",
+                    desc: "ประเพณีเก่าแก่กว่าร้อยปีของชาวไทยเชื้อสายจีน ชำระจิตใจและร่างกาย ลุยไฟ สะเดาะเคราะห์ พร้อมพิธีแห่ม้าทรงและขบวนพิธีอันศักดิ์สิทธิ์รอบเมืองภูเก็ต",
+                    tags: ["ถือศีลกินผัก", "พิธีม้าทรง", "ภูเก็ต"],
+                    icon: "fa-fire",
+                    color: "rose"
+                }
+            ],
+            food: [
+                {
+                    title: "แกงส้มใต้ / แกงเหลือง",
+                    subtitle: "รสจัดจ้านจัดจ้านด้วยขมิ้นสดและพริกขี้หนู",
+                    desc: "น้ำแกงสีเหลืองทองจากขมิ้นสด รสชาติเผ็ดร้อนเค็มเปรี้ยวกลมกล่อม ใส่ยอดมะพร้าว หน่อไม้ด่าง หรือปลากะพงสดๆ รสชาติจัดจ้านสะใจ",
+                    spiceLevel: 5,
+                    ingredients: ["ขมิ้นสด", "พริกขี้หนูสวน", "กะปิแท้", "น้ำมะนาว/ส้มแขก", "เนื้อปลา"],
+                    icon: "fa-bowl-food",
+                    color: "amber"
+                },
+                {
+                    title: "คั่วกลิ้ง (Khua Khling)",
+                    subtitle: "คั่วแห้งเผ็ดร้อนด้วยพริกแกงใต้เข้มข้น",
+                    desc: "เมนูเนื้อหมูหรือเนื้อสับ คั่วแห้งกับพริกแกงใต้กลิ่นหอมสมุนไพร ผสมใบมะกรูดซอยและพริกไทยอ่อน เผ็ดร้อนแห้งสนิทกินคู่ผักเหนาะสดๆ",
+                    spiceLevel: 5,
+                    ingredients: ["พริกแกงคั่วกลิ้ง", "หมู/เนื้อสับ", "ใบมะกรูด", "พริกไทยอ่อน"],
+                    icon: "fa-fire-flame-curry",
+                    color: "red"
+                },
+                {
+                    title: "ข้าวยำน้ำบูดู (Rice Salad)",
+                    subtitle: "เมนูสุขภาพและศิลปะแห่งอาหารใต้",
+                    desc: "ข้าวสวยเสิร์ฟพร้อมผักนานาชนิด มะพร้าวคั่ว กุ้งแห้งบด และราดด้วยน้ำบูดูต้มสุกรสชาติหวานเค็มกล่อมกล่อมลงตัว",
+                    spiceLevel: 1,
+                    ingredients: ["น้ำบูดูต้มสุก", "มะพร้าวคั่ว", "ส้มโอ/มะม่วงสับ", "ใบชะพลูซอย", "ถั่วพู"],
+                    icon: "fa-seedling",
+                    color: "teal"
+                },
+                {
+                    title: "ขนมจีนน้ำยาปู (Khanom Jeen)",
+                    subtitle: "เนื้อปูเน้นๆ ในน้ำยากะทิเผ็ดมัน",
+                    desc: "ขนมจีนเส้นสด ราดด้วยน้ำยากะทิเข้มข้นถึงเครื่องแกงใต้ ใส่ก้อนเนื้อปูสดก้อนโต รับประทานคู่กับผักเหนาะ ไข่ต้ม และต้มส้ม",
+                    spiceLevel: 4,
+                    ingredients: ["เนื้อปูก้อน", "พริกแกงใต้", "กะปิ", "กะทิสด", "ผักเหนาะนานาชนิด"],
+                    icon: "fa-utensils",
+                    color: "rose"
+                }
+            ],
+            crafts: [
+                {
+                    title: "ผ้าบาติก & ผ้าปาเต๊ะ (Batik Cloth)",
+                    subtitle: "สืบสานลวดลายสีสันธรรมชาติแห่งท้องทะเล",
+                    desc: "ผืนผ้าเขียนลายด้วยเทียนและระบายสีสันสดใส ลวดลายได้รับแรงบันดาลใจจากธรรมชาติ สัตว์ทะเล ดอกไม้ และวิถีชีวิตชาวใต้",
+                    tags: ["เขียนเทียน", "ระบายสีสด", "ลวดลายทะเล"],
+                    icon: "fa-shirt",
+                    color: "teal"
+                },
+                {
+                    title: "หัตถกรรมย่านลิเภา (Yan Lipao)",
+                    subtitle: "งานสานประณีตสูงค่าระดับพรีเมียม",
+                    desc: "ภูมิปัญญาการนำเถาย่านลิเภา พืชเถาจักสานตระกูลเฟิร์น มาจักสานเป็นกระเป๋า กล่อง และเครื่องใช้ ละเอียดประณีต ทนทานทรงคุณค่า",
+                    tags: ["จักสานละเอียด", "มรดกพรีเมียม", "เถาลิเภา"],
+                    icon: "fa-basket-shopping",
+                    color: "amber"
+                },
+                {
+                    title: "เรือกอและ (Kollae Boats)",
+                    subtitle: "ประติมากรรมมีชีวิตแห่งท้องทะเลใต้",
+                    desc: "เรือประมงพื้นบ้านของชาวจังหวัดนราธิวาสและปัตตานี วาดลวดลายไทยและลายมลายูสีสันสดใส ฉูดฉาด วิจิตรสวยงามกลางผืนน้ำ",
+                    tags: ["ลวดลายวิจิตร", "เรือประมง", "ลวดลายมลายู"],
+                    icon: "fa-sailboat",
+                    color: "sky"
+                }
+            ]
+        };
+
+        // Dialect Flashcard Data
+        const dialectCards = [
+            { word: "หรอยจังฮู้", meaning: "อร่อยมากๆ", example: "แกงส้มถ้วยนี้หรอยจังฮู้เลยพี่น้อง!" },
+            { word: "แหลง", meaning: "พูด / สนทนา", example: "แหลงใต้ให้ฟังหน่อยตะ" },
+            { word: "แล", meaning: "ดู / มอง", example: "ไปแลหนังตะลุงที่วัดกัน" },
+            { word: "พรุ่งนี้ = ตะรุกนี้ / หรอกนี้", meaning: "พรุ่งนี้", example: "ตะรุกนี้ตื่นเช้าๆ ไปตลาดกัน" },
+            { word: "ทำไรอยู่ = ทำไหรอยู่", meaning: "ทำอะไรอยู่", example: "น้องเอ้อ ทำไหรอยู่เล่า?" }
+        ];
+
+        // Quiz Questions Data
+        const quizQuestions = [
+            {
+                q: "คำว่า 'แหลง' ในภาษาใต้ มีความหมายตรงกับข้อใด?",
+                options: ["วิ่ง", "พูด", "กิน", "มอง"],
+                correct: 1
+            },
+            {
+                q: "ขนมชนิดใดในประประเพณีสารทเดือนสิบ เปรียบเสมือน 'แพพาหนะ' ให้บรรพบุรุษ?",
+                options: ["ขนมลา", "ขนมบ้า", "ขนมพอง", "ขนมกง"],
+                correct: 2
+            },
+            {
+                q: "วัตถุดิบสำคัญชนิดใดที่ทำให้ 'แกงส้มใต้' มีสีเหลืองทองอันเป็นเอกลักษณ์?",
+                options: ["ขมิ้นสด", "กระเทียม", "พริกไทยดำ", "กะทิ"],
+                correct: 0
+            }
+        ];
+
+        let currentTab = 'arts';
+        let currentCardIndex = 0;
+        let isCardFlipped = false;
+        let currentQuizIndex = 0;
+        let quizScore = 0;
+        let selectedBatikColor = '#f59e0b';
+        let audioCtx = null;
+        let bgAudioPlaying = false;
+
+        function switchTab(tabKey) {
+            currentTab = tabKey;
+            
+            // Update Tab Styling
+            document.querySelectorAll('.culture-tab').forEach(btn => {
+                btn.className = "culture-tab px-6 py-3 rounded-2xl border border-slate-800 bg-slate-900/80 hover:bg-slate-800 text-slate-300 font-semibold transition-all duration-300 flex items-center space-x-2";
+            });
+
+            const activeBtn = document.getElementById(`tab-${tabKey}`);
+            if(activeBtn) {
+                activeBtn.className = "culture-tab px-6 py-3 rounded-2xl border font-semibold transition-all duration-300 flex items-center space-x-2 bg-amber-500 border-amber-400 text-slate-950 shadow-lg shadow-amber-500/20";
+            }
+
+            renderTabContent();
+        }
+
+        function renderTabContent() {
+            const container = document.getElementById('tab-content');
+            const items = cultureData[currentTab];
+
+            if(currentTab === 'food') {
+                // Special render for Food with Spice Meters
+                container.innerHTML = `
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        ${items.map(item => `
+                            <div class="bg-slate-900 border border-amber-500/20 rounded-3xl p-6 sm:p-8 hover:border-amber-400/50 transition-all shadow-xl flex flex-col justify-between">
+                                <div>
+                                    <div class="flex justify-between items-start mb-4">
+                                        <div>
+                                            <span class="text-xs font-bold text-rose-400 uppercase tracking-wider">${item.subtitle}</span>
+                                            <h3 class="text-2xl font-bold text-amber-300 font-kanit mt-1">${item.title}</h3>
+                                        </div>
+                                        <div class="w-12 h-12 rounded-2xl bg-slate-800 border border-slate-700 flex items-center justify-center text-amber-400 text-xl">
+                                            <i class="fa-solid ${item.icon}"></i>
+                                        </div>
+                                    </div>
+                                    <p class="text-slate-300 text-sm leading-relaxed mb-6">${item.desc}</p>
+                                    
+                                    <!-- Spice Level Meter -->
+                                    <div class="mb-6 bg-slate-950 p-4 rounded-2xl border border-slate-800">
+                                        <div class="flex justify-between items-center mb-2">
+                                            <span class="text-xs font-bold text-slate-400">ระดับความเผ็ดร้อน (Spice Level):</span>
+                                            <span class="text-xs font-bold text-rose-400">${item.spiceLevel}/5</span>
+                                        </div>
+                                        <div class="flex space-x-2">
+                                            ${Array.from({length: 5}).map((_, i) => `
+                                                <i class="fa-solid fa-pepper-hot text-lg ${i < item.spiceLevel ? 'text-rose-500 spice-fire' : 'text-slate-700'}"></i>
+                                            `).join('')}
+                                        </div>
+                                    </div>
+
+                                    <!-- Ingredients -->
+                                    <div>
+                                        <span class="text-xs font-bold text-teal-400 block mb-2">วัตถุดิบสำคัญ:</span>
+                                        <div class="flex flex-wrap gap-2">
+                                            ${item.ingredients.map(ing => `
+                                                <span class="px-3 py-1 bg-slate-800 text-slate-300 rounded-lg text-xs font-medium">${ing}</span>
+                                            `).join('')}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+            } else {
+                // Standard cards layout
+                container.innerHTML = `
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        ${items.map(item => `
+                            <div class="bg-slate-900 border border-amber-500/20 rounded-3xl p-6 sm:p-8 hover:border-amber-400/50 transition-all shadow-xl flex flex-col justify-between group hover:-translate-y-1 duration-300">
+                                <div>
+                                    <div class="w-14 h-14 rounded-2xl bg-slate-800 border border-amber-500/30 flex items-center justify-center text-amber-400 text-2xl mb-6 group-hover:scale-110 transition-transform">
+                                        <i class="fa-solid ${item.icon}"></i>
+                                    </div>
+                                    <span class="text-xs font-bold text-rose-400 uppercase tracking-wider">${item.subtitle}</span>
+                                    <h3 class="text-2xl font-bold text-amber-300 font-kanit mt-1 mb-3">${item.title}</h3>
+                                    <p class="text-slate-300 text-sm leading-relaxed mb-6">${item.desc}</p>
+                                </div>
+                                <div class="flex flex-wrap gap-2 pt-4 border-t border-slate-800">
+                                    ${item.tags ? item.tags.map(tag => `
+                                        <span class="px-3 py-1 bg-amber-500/10 border border-amber-500/30 text-amber-300 rounded-full text-xs font-medium">#${tag}</span>
+                                    `).join('') : ''}
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+            }
+        }
+
+        function initAudio() {
+            if (!audioCtx) {
+                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            }
+        }
+
+        // Play synthetic Gong sound
+        function playGongSound() {
+            initAudio();
+            if (audioCtx.state === 'suspended') audioCtx.resume();
+
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(220, audioCtx.currentTime); // Low gong tone
+            osc.frequency.exponentialRampToValueAtTime(110, audioCtx.currentTime + 1.5);
+
+            gain.gain.setValueAtTime(0.8, audioCtx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 2.0);
+
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+
+            osc.start();
+            osc.stop(audioCtx.currentTime + 2.0);
+        }
+
+        // Play synthetic Southern Drum beat
+        function playDrumBeat() {
+            initAudio();
+            if (audioCtx.state === 'suspended') audioCtx.resume();
+
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+
+            osc.type = 'triangle';
+            osc.frequency.setValueAtTime(150, audioCtx.currentTime);
+            osc.frequency.exponentialRampToValueAtTime(40, audioCtx.currentTime + 0.2);
+
+            gain.gain.setValueAtTime(1, audioCtx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.2);
+
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+
+            osc.start();
+            osc.stop(audioCtx.currentTime + 0.2);
+        }
+
+        function playPuppetDialog(character) {
+            playGongSound();
+
+            const speakerEl = document.getElementById('puppet-speaker');
+            const textEl = document.getElementById('puppet-text');
+
+            if(character === 'teng') {
+                speakerEl.textContent = "อ้ายเท่ง (Ai Teng) พากย์:";
+                textEl.textContent = `"หวัดดีน้องเอ้อ! มาเที่ยวใต้ทั้งที อย่าลืมชิมแกงส้มแลตะ หรอยจังฮู้!"`;
+                
+                // Animate arm
+                const arm = document.getElementById('teng-arm');
+                if(arm) {
+                    arm.style.transform = 'rotate(-20deg)';
+                    setTimeout(() => arm.style.transform = 'rotate(0deg)', 300);
+                }
+            } else {
+                speakerEl.textContent = "นายหนูนุ้ย / ทองแดง พากย์:";
+                textEl.textContent = `"จริงอย่างอ้ายเท่งว่า! คั่วกลิ้งก็หรอย เผ็ดหูดับตับไหม้กันเลยพี่น้องเอ้อ!"`;
+
+                // Animate arm
+                const arm = document.getElementById('saeng-arm');
+                if(arm) {
+                    arm.style.transform = 'rotate(25deg)';
+                    setTimeout(() => arm.style.transform = 'rotate(0deg)', 300);
+                }
+            }
+        }
+
+        // Toggle background rhythmic sound preview
+        let musicInterval = null;
+        function toggleSouthernMusic() {
+            initAudio();
+            if (audioCtx.state === 'suspended') audioCtx.resume();
+
+            const btnText = document.getElementById('music-text');
+            const btnIcon = document.getElementById('music-icon');
+
+            if(!bgAudioPlaying) {
+                bgAudioPlaying = true;
+                btnText.textContent = "ปิดเสียงดนตรีใต้";
+                btnIcon.className = "fa-solid fa-volume-high animate-bounce";
+
+                let beatCount = 0;
+                musicInterval = setInterval(() => {
+                    playDrumBeat();
+                    beatCount++;
+                    if(beatCount % 4 === 0) {
+                        setTimeout(() => playGongSound(), 100);
+                    }
+                }, 400);
+            } else {
+                bgAudioPlaying = false;
+                btnText.textContent = "เปิดเสียงดนตรีใต้";
+                btnIcon.className = "fa-solid fa-music";
+                clearInterval(musicInterval);
+            }
+        }
+
+        function setSelectedColor(hex) {
+            selectedBatikColor = hex;
+            document.getElementById('current-color-indicator').style.backgroundColor = hex;
+            document.getElementById('current-color-hex').textContent = hex;
+        }
+
+        function colorPart(element) {
+            element.setAttribute('fill', selectedBatikColor);
+        }
+
+        function resetBatikCanvas() {
+            document.getElementById('batik-bg').setAttribute('fill', '#1e293b');
+            document.querySelectorAll('#center-flower path').forEach(p => p.setAttribute('fill', '#e11d48'));
+            document.querySelectorAll('#corners path').forEach(p => p.setAttribute('fill', '#0284c7'));
+        }
+
+        function randomizeBatikColors() {
+            const colors = ['#e11d48', '#f59e0b', '#0d9488', '#7c3aed', '#0284c7', '#10b981', '#f43f5e', '#fbbf24'];
+            document.querySelectorAll('#batik-svg path, #batik-svg circle, #batik-svg rect').forEach(el => {
+                if(el.id !== 'batik-svg') {
+                    const randomColor = colors[Math.floor(Math.random() * colors.length)];
+                    el.setAttribute('fill', randomColor);
+                }
+            });
+        }
+
+        function renderCard() {
+            const card = dialectCards[currentCardIndex];
+            document.getElementById('card-step').textContent = `การ์ดที่ ${currentCardIndex + 1} จาก ${dialectCards.length} (คลิกเพื่อพลิกดูคำแปล)`;
+            document.getElementById('card-word').textContent = card.word;
+            
+            const meaningEl = document.getElementById('card-meaning');
+            meaningEl.innerHTML = `
+                <span class="text-amber-300 font-bold text-lg">แปลว่า: ${card.meaning}</span><br>
+                <span class="text-xs italic text-slate-400">"${card.example}"</span>
+            `;
+
+            if(isCardFlipped) {
+                meaningEl.classList.remove('hidden');
+            } else {
+                meaningEl.classList.add('hidden');
+            }
+        }
+
+        function flipCard() {
+            isCardFlipped = !isCardFlipped;
+            renderCard();
+        }
+
+        function nextCard() {
+            isCardFlipped = false;
+            currentCardIndex = (currentCardIndex + 1) % dialectCards.length;
+            renderCard();
+        }
+
+        function prevCard() {
+            isCardFlipped = false;
+            currentCardIndex = (currentCardIndex - 1 + dialectCards.length) % dialectCards.length;
+            renderCard();
+        }
+
+        function renderQuiz() {
+            const q = quizQuestions[currentQuizIndex];
+            document.getElementById('quiz-progress').textContent = `ข้อที่ ${currentQuizIndex + 1} / ${quizQuestions.length}`;
+            document.getElementById('quiz-score').textContent = `คะแนน: ${quizScore}`;
+            document.getElementById('quiz-question').textContent = q.q;
+
+            const optionsContainer = document.getElementById('quiz-options');
+            optionsContainer.innerHTML = q.options.map((opt, idx) => `
+                <button onclick="answerQuiz(${idx})" class="w-full text-left p-4 rounded-2xl bg-slate-900 border border-slate-800 hover:border-amber-500/50 hover:bg-slate-800/80 transition-all font-medium text-slate-200 text-sm flex items-center justify-between group">
+                    <span>${idx + 1}. ${opt}</span>
+                    <i class="fa-solid fa-chevron-right text-slate-600 group-hover:text-amber-400 transition-colors"></i>
+                </button>
+            `).join('');
+        }
+
+        function answerQuiz(selectedIndex) {
+            const q = quizQuestions[currentQuizIndex];
+            if(selectedIndex === q.correct) {
+                quizScore += 10;
+            }
+
+            if(currentQuizIndex < quizQuestions.length - 1) {
+                currentQuizIndex++;
+                renderQuiz();
+            } else {
+                // Quiz completed
+                document.getElementById('quiz-box').innerHTML = `
+                    <div class="text-center py-8">
+                        <i class="fa-solid fa-trophy text-5xl text-amber-400 mb-4 animate-bounce"></i>
+                        <h4 class="text-2xl font-bold text-white font-kanit mb-2">ยินดีด้วย! คุณเก่งมากๆ</h4>
+                        <p class="text-slate-300 text-sm mb-6">คุณได้คะแนนทั้งหมด <span class="text-amber-400 font-bold text-lg">${quizScore}</span> จาก 30 คะแนน</p>
+                        <button onclick="resetQuiz()" class="px-6 py-3 rounded-full bg-amber-500 text-slate-950 font-bold text-sm hover:bg-amber-400 transition-colors">
+                            เริ่มทำควิซอีกครั้ง
+                        </button>
+                    </div>
+                `;
+            }
+        }
+
+        function resetQuiz() {
+            currentQuizIndex = 0;
+            quizScore = 0;
+            renderQuiz();
+        }
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        window.onload = function() {
+            renderTabContent();
+            renderCard();
+            renderQuiz();
+        };
+    </script>
+</body>
+</html>
